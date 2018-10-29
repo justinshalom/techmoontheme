@@ -1,75 +1,88 @@
 <?php
 /**
- * The main template file
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
+ * 	The main template file
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * 	This is the most generic template file in a WordPress theme
+ * 	and one of the two required files for a theme (the other being style.css).
+ * 	It is used to display a page when nothing more specific matches a query.
+ * 	E.g., it puts together the home page when no home.php file exists.
  *
- * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
- * @version 1.0
+ * 	@link http://codex.wordpress.org/Template_Hierarchy
+ *
+ *  @package WordPress
+ *  @subpackage Materialize
+ *  @since Materialize 1.0
  */
 
 get_header(); ?>
 
-<div class="wrap col s12 no-padding">
-	<?php if ( is_home() && ! is_front_page() ) : ?>
-		<header class="page-header col s12 z-depth-1">
-			<h4 class="page-title">
-        <i class="material-icons left">explore</i> <?php single_post_title(); ?></h4>
-		</header>
-	<?php else : ?>
-	<header class="page-header col s12 z-depth-1">
-		<h4 class="page-title">
-      <i class="material-icons left">explore</i><?php _e( 'Posts', 'techmoon' ); ?></h4>
-	</header>
-	<?php endif; ?>
+	<?php
+	    if( (bool)get_theme_mod( 'techmoon-show-breadcrumbs', true ) ){
+	?>
+			<!-- the breadcrumbs content -->
+	        <div class="techmoon-page-header">
 
-	<div id="primary" class="content-area col s12  no-padding ">
-		<main id="main" class="site-main col s12" role="main">
+	        	<!-- the breadcrumbs container ( align to center ) -->
+		      	<div class="container">
+		        	<div class="row">
 
-			<?php
-			if ( have_posts() ) :
+		          		<div class="col s12 m8 l9">
 
-				/* Start the Loop */
-				while ( have_posts() ) : the_post();
+		          			<!-- the breadcrumbs navigation path -->
+		            		<nav class="techmoon-nav-inline">
+		              			<ul class="techmoon-menu">
 
-					/*
-					 * Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					get_template_part( 'template-parts/post/content', get_post_format() );
+		              				<!-- the home link -->
+		                			<?php echo techmoon_breadcrumbs::home(); ?>
 
-				endwhile;
-?>
+		                			<!-- the last arrow from path -->
+		                			<li></li>
+		              			</ul>
+		            		</nav>
 
-        <div class="col s12">
-          <?php
-				the_posts_pagination( array(
-					'prev_text' => techmoon_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">' . __( 'Previous page', 'techmoon' ) . '</span>',
-					'next_text' => '<span class="screen-reader-text">' . __( 'Next page', 'techmoon' ) . '</span>' . techmoon_get_svg( array( 'icon' => 'arrow-right' ) ),
-					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'techmoon' ) . ' </span>',
-				) );
-?>
-      </div>
+		            		<!-- the headline -->
+		            		<h1 id="materialize-blog-title"><?php echo esc_html( get_theme_mod( 'techmoon-breadcrumbs-blog-title', __( 'Blog' , 'materialize' ) ) ); ?></h1>
+		          		</div>
 
-    <?php
-			else :
+		          		<!-- the number of posts from blog -->
+		          		<div class="col s12 m4 l3 techmoon-posts-found">
+		                    <div class="found-details">
+		                        <?php echo techmoon_breadcrumbs::count( $wp_query ); ?>
+		                    </div>
+		                </div>
 
-				get_template_part( 'template-parts/post/content', 'none' );
+		        	</div>
+		      	</div>
 
-			endif;
-			?>
+		    </div>
+	<?php
+		}
+	?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
-	<?php get_sidebar(); ?>
-</div><!-- .wrap -->
 
-<?php get_footer();
+    <!-- the content -->
+    <div class="content">
+
+        <!-- the container ( align to center ) -->
+        <div class="container">
+            <div class="row">
+
+                <?php
+
+                    /**
+                     *
+                     *  Include the posts loop
+                     *  If you want to override this in a child theme, then include a file
+                     *  called loop.php and that will be used instead.
+                     */
+
+                    get_template_part( 'templates/loop' );
+                ?>
+
+            </div>
+        </div><!-- .container -->
+    </div><!-- .content -->
+
+
+<?php get_footer(); ?>

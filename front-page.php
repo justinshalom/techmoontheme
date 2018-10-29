@@ -1,153 +1,175 @@
-<?php 
+<?php
 /**
- * The front page template file
  *
- * If the user has selected a static page for their homepage, this is what will
- * appear.
- * Learn more: https://codex.wordpress.org/Template_Hierarchy
+ *  The front page template
+ *  It can display a static page or latest blog posts.
  *
- * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
- * @version 1.0
+ *  @package WordPress
+ *  @subpackage Materialize
+ *  @since Materialize 1.0
  */
 
-get_header();
+get_header(); ?>
+
+<?php
+    $is_enb_front_page      = get_option( 'show_on_front' ) == 'page';
+    $is_front_page          = $is_enb_front_page && is_front_page();
+
+    if( $is_front_page ){
+
+	   $are_active_sidebras =  is_active_sidebar( 'front-page-header-first' ) ||
+                               is_active_sidebar( 'front-page-header-second' ) ||
+                               is_active_sidebar( 'front-page-header-third' );
+
+        if( $are_active_sidebras ){
 ?>
+            <!-- the header front page sidebars -->
+            <div class="techmoon-white techmoon-front-page-header-sidebars">
 
-<div class="carousel carousel-slider center col s12 z-depth-1 animated ">
-  <div class="carousel-item  white-text" href="#one!">
-    <img src="<?php echo get_theme_file_uri()."/assets/images/banner31.jpg";?>" />
-      <h2>Training  </h2>
-      <p class="white-text">Your need is our care</p>
-    </div>
+                <!-- the header front page sidebars content -->
+                <div class="content">
+                    <div class="container">
 
-  <div class="carousel-item" href="#two!">
-    <img src="<?php echo get_theme_file_uri()."/assets/images/slide4.jpg";?>"/>
-      <h2>Auditing </h2>
-      <p class="white-text">Strong and safe</p>
-  </div>
- 
-  <div class="carousel-item" href="#four!">
-    <img src="<?php echo get_theme_file_uri()."/assets/images/banner41.jpg";?>"/>
-      <h2>Labs  </h2>
-      <p class="white-text">Extensive inventories to serve all your needs</p>
-  </div>
-  <div class="carousel-item" href="#four!">
-    <img src="<?php echo get_theme_file_uri()."/assets/images/banner1.jpg";?>"/>
-      <h2>Consultancy  </h2>
-      <p class="white-text">Strong and safe</p>
-  </div>
-</div>
+                        <aside class="row techmoon-header-items">
 
-
-<div class="section col s12" >
-
-  <!--   Icon Section   -->
-  <div class="row">
-    <?php
-		// Get each of our panels and show the post data.
-		if ( 0 !== techmoon_panel_count() || is_customize_preview() ) : // If we have pages to show.
-
-			/**
-			 * Filter number of front page sections in TechMoon.
-			 *
-			 * @since TechMoon 1.0
-			 *
-			 * @param int $num_sections Number of front page sections.
-			 */
-			$num_sections = apply_filters( 'techmoon_front_page_sections', 4 );
-			global $techmooncounter;
-
-			// Create a setting and control for each of the sections available in the theme.
-			for ( $i = 1; $i < ( 1 + $num_sections ); $i++ ) {
-				$techmooncounter = $i;
-				techmoon_front_page_section( null, $i );
-			}
-
-	endif; // The if ( 0 !== techmoon_panel_count() ) ends here. ?>
-   
-  </div>
-
-</div>
-
-<p class="mytheory col s12 z-depth-4" data-aos="flip-up">
-  AUTHORIZED AUDITS IN
-  <span>
-    ISO 9001, ISO 14001, ISO 25000, ISO 45001
-
-  </span>
-  WE ARE PROVIDING TRAINING FOR FOOD SAFETY
-</p>
-
-
-
-<!--<div class="col s12 l6  broucherbox z-depth-1 " data-aos="fade-down-right">
-
-  <div class=" brouchertypecategory">
-    <div class="top">
-      <span class="search">
-       Leading Products
-      </span>
+                            <!-- the header front page first sidebar -->
      
-    </div>
-    <ul class="middle">
-      <?php
-$args = [
-    'taxonomy'     => 'category',
-    'parent'        => 382,
-    'hide_empty'    => true           
-];
-$categories = get_terms( $args );
-foreach($categories as $category) { 
-    echo ' <li tabindex="0"> <a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a></li>';  
-}
+
+                            <!-- the header front page second sidebar -->
+                            <div class="col s12 m4 l4 header-item">
+                                <?php get_sidebar( 'front-page-header-second' ); ?>
+                            </div>
+
+                            <!-- the header front page third sidebar -->
+                            <div class="col s12 m4 l4 header-item">
+                                <?php get_sidebar( 'front-page-header-third' ); ?>
+                            </div>
+                            
+                        </aside>
+                    </div>
+                </div>
+            </div>
+<?php
+        }
+    }
 ?>
 
-     
-    </ul>
-    <div class="bottom"></div>
-    <div class="menu-back"></div>
-    <div class="glass-reflection"></div>
-  </div>
-</div>-->
-<!--<div class="col s10 l4  offset-s1 offset-l1"  data-aos="fade-down-left">
 
-  <h4 class="Brands ">
-     Our Brands</h4>
+<!-- the content -->
+<div class="content">
 
-  <div class="carousel ports">
-    <a class="carousel-item" href="#one!">
-      <img src="<?php echo get_theme_file_uri()."/assets/images/Danfoss1.png";?>"/>
-    </a>
-   
-    <a class="carousel-item" href="#three!">
-      <img src="<?php echo get_theme_file_uri()."/assets/images/1032401v2v.bmp";?>"/>
-    </a>
-    <a class="carousel-item" href="#four!">
-      <img src="<?php echo get_theme_file_uri()."/assets/images/belzona_logo.png";?>"/>
-    </a>
-    <a class="carousel-item" href="#five!">
-      <img src="<?php echo get_theme_file_uri()."/assets/images/Vintex-Fire-logo.jpg";?>"/>
-    </a>
-    <a class="carousel-item" href="#six!">
-      <img src="<?php echo get_theme_file_uri()."/assets/images/Slider.jpg";?>"/>
-    </a>
-    
-  </div>
+    <!-- the container ( align to center ) -->
+    <div class="container">
+        <div class="row">
+
+            <?php
+                // static front page
+                if( $is_front_page ){
+
+                    // get layout details
+                    $techmoon_layout = new techmoon_layout( 'front-page' );
+
+                    // left sidebar ( if exists )
+                    $techmoon_layout -> sidebar( 'left' );
+            ?>
+                    <!-- the page content -->
+                    <section class="<?php echo $techmoon_layout -> classes(); ?>">
+
+                    <?php
+
+                        $wp_query = new WP_Query(array(
+                            'p' 		=> get_option( 'page_on_front' ),
+                            'post_type' => 'page'
+                        ));
+
+                        $not_found = true;
+
+                        if( count( $wp_query -> posts ) ){
+
+                            // the page content class
+                            $classes = implode( ' ' , get_post_class( 'techmoon-page' , absint( get_option( 'page_on_front' ) ) ) );
+
+                            // the page content wrapper
+                            echo '<div class="' . $classes . '">';
+
+                            foreach( $wp_query -> posts as $post ){
+
+                                $wp_query -> the_post();
+
+                                // the page thumbnail
+                                $p_thumbnail = get_post( get_post_thumbnail_id() );
+
+                                if( has_post_thumbnail() && isset( $p_thumbnail -> ID ) ){
+                                	?>
+	                                    <div class="post-thumbnail">
+	                                    <?php
+	                                    	echo get_the_post_thumbnail( $post -> ID, 'full', array( 
+	                                    		'alt' 	=> techmoon_post::title( $post -> ID, true )
+	                                    	));
+
+                                            // the thumbnail caption 
+	                                    	$c_thumbnail = !empty( $p_thumbnail -> post_excerpt ) ? esc_html( $p_thumbnail -> post_excerpt ) : null;
+	                                    
+	                                        if( !empty( $c_thumbnail ) ) {
+	                                    		?>
+		                                            <footer class="wp-caption">
+		                                                <?php echo $c_thumbnail; ?>
+		                                            </footer>
+	                                    		<?php
+	                                        }
+	                                    ?>
+	                                    </div>
+                                	<?php
+                            	}
+
+                                // the page content
+                                the_content();
+
+                                // the page pagination
+                                wp_link_pages( array( 
+                                    'before'        => '<div class="clearfix"></div><div class="techmoon-paged-post"><span class="techmoon-pagination-title">' . __( 'Pages', 'materialize' ) . ': </span>',
+                                    'after'         => '</div>',
+                                    'link_before'   => '<span class="techmoon-pagination-item">',
+                                    'link_after'   	=> '</span>'
+                                ));
+
+                                echo '<div class="clearfix"></div>';
+                                echo '</div>';
+                            }
+
+                            $not_found = false;
+                        }
+
+                        // if page not found
+                        if( $not_found ){
+                            echo '<h3>' . __( 'Page not found' , 'materialize' ) . '</h3>';
+                            echo '<p>' . __( 'We apologize but this page, post or resource does not exist or can not be found.' , 'materialize' ) . '</p>';
+                        }
+                    ?>
+
+                    </section>
+            <?php
+                    // right sidebar ( if exists )
+                    $techmoon_layout -> sidebar( 'right' );
+
+                }
+
+                // latest blog posts
+                else{
+
+                    /**
+                     *
+                     *  Include the posts loop
+                     *  If you want to override this in a child theme, then include a file
+                     *  called loop.php and that will be used instead.
+                     */
+
+                    get_template_part( 'templates/loop' );
+                }
+            ?>
+            </div>
+        </div><!-- .container -->
+    </div><!-- .content -->
 
 
-</div>-->
-
-
-
-
-
-
-<div id="primary" class="content-area col s12  no-padding ">
-	<main id="main" class="site-main" role="main">
-    
-	</main>
-</div>
-<?php get_footer();
-?>
+<?php get_footer(); ?>

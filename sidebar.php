@@ -1,20 +1,17 @@
 <?php
 /**
- * The sidebar containing the main widget area
  *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *  The template for the main sidebar containing the widgets
+ *  Blog, Archives, Categories, Tags, Author, Search ... - the content layout
+ *  with left or right sidebar.
  *
- * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
- * @version 1.0
+ *  @package WordPress
+ *  @subpackage Materialize
+ *  @since Materialize 1.0
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	return;
-}
+	// main sidebar
+    if ( dynamic_sidebar( 'main' ) ){
+        // if not empty
+    }
 ?>
-
-<aside id="secondary" class="widget-area col s12 m12 l4" role="complementary" aria-label="<?php esc_attr_e( 'Blog Sidebar', 'techmoon' ); ?>">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
-</aside><!-- #secondary -->

@@ -1,66 +1,135 @@
 <?php
 /**
- * The template for displaying archive pages
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ *  The template for displaying archive pages
  *
- * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
- * @version 1.0
+ *  Used to display archive-type pages if nothing more specific matches a query.
+ *  For example, puts together date-based pages if no date.php file exists.
+ *
+ *  @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ *  @package WordPress
+ *  @subpackage Materialize
+ *  @since Materialize 1.0
  */
 
 get_header(); ?>
 
-<div class="wrap col s12 no-padding">
- 
-    <?php if ( have_posts() ) : ?>
-    <header class="page-header col s12 z-depth-1">
-      <?php
-				the_archive_title( '<h4 class="page-title "> <i class="material-icons left">explore</i>', '</h4>' );
-				the_archive_description( '<blockquote class="taxonomy-description col s11">', '</blockquote>' );
-			?>
-    </header>
-    <!-- .page-header -->
-    <?php endif; ?>
- 
 
-		<?php
-		if ( have_posts() ) : ?>
-  <div id="primary" class="content-area col s12  ">
-    <main id="main" class="site-main col s12  " role="main">
+    <?php
+        if( (bool)get_theme_mod( 'techmoon-show-breadcrumbs', true ) ){
+    ?>
+            <!-- the breadcrumbs content -->
+            <div class="techmoon-page-header">
 
-      <?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+                <!-- the breadcrumbs container ( align to center ) -->
+                <div class="container">
+                    <div class="row">
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-        
-         
-				get_template_part( 'template-parts/post/content', "archive" );
+                        <div class="col s12 m8 l9">
 
-			endwhile;
-?>
-<?php
-get_template_part( 'template-parts/navigation/navigation', 'posts' );
-      ?>
-    </main>
-    <!-- #main -->
-  </div>
-  <!-- #primary -->
-        <?php
-		else :
+                            <!-- the breadcrumbs navigation path -->
+                            <nav class="techmoon-nav-inline">
+                                <ul class="techmoon-menu">
 
-			get_template_part( 'template-parts/post/content', 'none' );
+                                    <!-- the home link -->
+                                    <?php echo techmoon_breadcrumbs::home(); ?>
 
-		endif; ?>
-     
-	
-	
-</div><!-- .wrap -->
+                                    <?php
+                                        // the path for the daily archives
+                                        if ( is_day() ){
+                                            $day    = get_the_date( );
+                                            $m      = get_the_date( 'm' );
+                                            $d      = get_the_date( 'd' );
 
-<?php get_footer();
+                                            $month  = get_the_date( 'F' );
+                                            $year   = get_the_date( 'Y' );
+                                            $FY     = get_the_date( 'F Y' );
+
+                                            echo '<li><a href="' . esc_url( get_year_link( $year ) ) . '" title="' . sprintf( __( 'Yearly archives - %s' , 'materialize' ), esc_attr( $year ) ) . '">'  . esc_html( $year ) . '</a></li>';
+                                            echo '<li><a href="' . esc_url( get_month_link( $year, $m ) ) . '" title="' . sprintf( __( 'Monthly archives - %s' , 'materialize' ), esc_attr( $FY ) ) . '">'  . esc_html( $month ) . '</a></li>';
+                                            echo '<li><time datetime="' . esc_attr( get_the_date( 'Y-m-d' ) ) . '">' . esc_html( $d ) . '</time></li>';
+
+                                            $title  = __( 'Daily Archives' , 'materialize' );
+
+                                        }
+
+                                        // the path for the monthly archives
+                                        else if ( is_month() ){
+                                            $month  = get_the_date( 'F' );
+                                            $year   = get_the_date( 'Y' );
+
+                                            echo '<li><a href="' . esc_url( get_year_link( $year ) ) . '" title="' . sprintf( __( 'Yearly archives - %s' , 'materialize' ), esc_attr( $year ) ) . '">'  . esc_html( $year ) . '</a></li>';
+                                            echo '<li><time datetime="' . esc_attr( get_the_date( 'Y-m-d' ) ) . '">' . esc_html( $month ) . '</time></li>';
+                                            
+                                            $title  = __( 'Monthly Archives' , 'materialize' );
+
+                                        }
+
+                                        // the path for the yearly archives
+                                        else if ( is_year() ){
+                                            $year   = get_the_date( 'Y' );
+                                            echo '<li><time datetime="' . esc_attr( get_the_date( 'Y-m-d' ) ) . '">'  . esc_html( $year ) . '</time></li>';
+
+                                            $title  = __( 'Yearly Archives' , 'materialize' );
+
+                                        }
+
+                                        // the path for the others cases
+                                        else{
+                                            $year   = __( 'Archives' , 'materialize' );
+                                            echo '<li>' . esc_html( $year ) . '</li>';
+                                            $title  = $year;
+                                        }
+                                    ?>
+
+                                    <!-- the last arrow from path -->
+                                    <li></li>
+                                </ul>
+                            </nav>
+
+                            <!-- the headline -->
+                            <h1><?php echo $title; ?></h1>
+                        </div>
+
+                        <!-- the number of posts from archive -->
+                        <div class="col s12 m4 l3 techmoon-posts-found">
+                            <div class="found-details">
+                                <?php echo techmoon_breadcrumbs::count( $wp_query ); ?>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+    <?php
+        }
+    ?>
+
+
+    <!-- the content -->
+    <div class="content">
+
+        <!-- the container ( align to center ) -->
+        <div class="container">
+            <div class="row">
+
+                <?php
+
+                    /**
+                     *
+                     *  Include the posts loop
+                     *  If you want to override this in a child theme, then include a file
+                     *  called loop.php and that will be used instead.
+                     */
+
+                    get_template_part( 'templates/loop' );
+                ?>
+
+            </div>
+        </div><!-- .container -->
+    </div><!-- .content -->
+
+
+<?php get_footer(); ?>

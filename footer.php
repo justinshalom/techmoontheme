@@ -1,62 +1,175 @@
 <?php
 /**
- * The template for displaying the footer
  *
- * Contains the closing of the #content div and all content after.
+ *  The template for displaying the footer
  *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *  Contains the footer sidebars, social items,
+ *  content copyright, theme copyright
  *
- * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
- * @version 1.2
+ *  @package WordPress
+ *  @subpackage Materialize
+ *  @since Materialize 1.0
  */
-
 ?>
-</div><!-- #content -->
-</div><!-- #content -->
-</section>
+        <footer>
+            <?php
+                $are_active_sidebras =  is_active_sidebar( 'footer-first' ) ||
+                                        is_active_sidebar( 'footer-second' ) ||
+                                        is_active_sidebar( 'footer-third' ) ||
+                                        is_active_sidebar( 'footer-fourth' );
+
+                if( $are_active_sidebras || (bool)get_theme_mod( 'techmoon-default-content', true ) ){
+            ?>
+                    <!-- footer sidebars -->
+                    <aside class="techmoon-footer-sidebars">
+
+                        <!-- the sidebars container ( align to center ) -->
+                        <div class="container">
+                            <div class="row">
+
+                                <!-- first footer sidebar -->
+                                <div class="col s12 m6 l3">
+                                    <?php get_sidebar( 'footer-first' ); ?>
+                                </div>
+
+                                <!-- second footer sidebar -->
+                                <div class="col s12 m6 l3">
+                                    <?php get_sidebar( 'footer-second' ); ?>
+                                </div>
+
+                                <!-- third footer sidebar -->
+                                <div class="col s12 m6 l3">
+                                    <?php get_sidebar( 'footer-third' ); ?>
+                                </div>
+
+                                <!-- fourth footer sidebar -->
+                                <div class="col s12 m6 l3">
+                                    <?php get_sidebar( 'footer-fourth' ); ?>
+                                </div>
+
+                            </div>
+                        </div><!-- .container -->
+                    </aside><!-- .techmoon-footer-sidebars -->
+            <?php
+                }
+            ?>
+
+            <!-- dark mask social and copyright wrapper -->
+            <div class="techmoon-dark-mask">
+
+                <?php
+
+                    $social_items = array(
+                        'github',           'gitlab',           'instagram',        'evernote',     'vimeo',
+                        'vimeo-circled',    'twitter', 			'skype',		    'renren',       'rdio',
+                        'linkedin',         'behance',          'dropbox',          'flickr', 	 	'vkontakte',
+                        'facebook',         'tumblr',           'picasa',			'dribbble',		'stumbleupon',
+                        'lastfm', 		    'gplus',            'google-circles', 	'youtube-play', 'youtube',
+                        'pinterest',        'smashing',         'soundcloud', 		'flattr',		'odnoklassniki',
+                        'mixi',             'reddit',           'rss'
+                    );
 
 
-		
+                    //$rss        = esc_url( get_theme_mod( 'techmoon-rss', esc_url( get_bloginfo('rss2_url') ) ) );
 
-		<footer id="colophon" class="site-footer page-footer z-depth-1" role="contentinfo">
-			<div class="row">
-        <div class="col l8 m12 s12 no-padding">
-				<?php
-				get_template_part( 'template-parts/footer/footer', 'widgets' );
-?>
-        </div>
-        <div class="col l4 m12 s12">
-          <?php
-				if ( has_nav_menu( 'social' ) ) : ?>
-					<div class="social-navigation" role="navigation"  data-aos="fade-down"
-     data-aos-easing="linear"
-     data-aos-duration="300" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'techmoon' ); ?>">
-						<?php
-							wp_nav_menu( array(
-								'theme_location' => 'social',
-								'menu_class'     => 'social-links-menu',
-								'depth'          => 1,
-								'link_before'    => '<span class="screen-reader-text">',
-								'link_after'     => '</span>' . techmoon_get_svg( array( 'icon' => 'chain' ) ),
-							) );
-						?>
-					</div><!-- .social-navigation -->
-        </div>
-				<?php endif;
+                    $empty_social_items = true;
 
-				get_template_part( 'template-parts/footer/site', 'info' );
-				?>
-			</div><!-- .wrap -->
-		</footer><!-- #colophon -->
+                    foreach( $social_items as $item ){
+                        $url = esc_url( get_theme_mod( "techmoon-{$item}" ) );
 
-</div>
-</div>
-</div>
-	</div><!-- .site-content-contain -->
-</div><!-- #page -->
-<?php wp_footer(); ?>
-</div>
-</body>
+                        if( $item == 'rss' ){
+                            if( (bool)get_theme_mod( 'techmoon-display-rss', true ) ){
+                                $empty_social_items = $empty_social_items && empty( $url );
+                            }
+
+                            continue;
+                        }
+
+                        $empty_social_items = $empty_social_items && empty( $url );
+                    }
+
+                    if( !$empty_social_items ){
+                ?>
+                        <!-- social items -->
+                        <div class="container techmoon-social">
+                            <div class="row">
+
+                                <div class="col s12">
+                                    <?php
+                                        foreach( $social_items as $item ){
+                                            $url = esc_url( get_theme_mod( "techmoon-{$item}" ) );
+
+                                            if( $item == 'rss' ){
+                                                if( (bool)get_theme_mod( 'techmoon-display-rss', true ) && !empty( $url ) ){
+                                                    echo '<a href="' . esc_url( $url ) . '" class="btn-floating waves-effect waves-light materialize-icon-' . esc_attr( $item ) . '" target="_blank" rel="nofollow"></a>';
+                                                }
+
+                                                continue;
+                                            }
+
+                                            if( !empty( $url ) ){
+                                                echo '<a href="' . esc_url( $url ) . '" class="btn-floating waves-effect waves-light materialize-icon-' . esc_attr( $item ) . '" target="_blank" rel="nofollow"></a>';
+                                            }
+                                        }
+                                    ?>
+                                </div>
+                            </div>
+                        </div><!-- .techmoon-social -->
+                <?php
+                    }
+                ?>
+
+                <!-- copyright -->
+                <div class="techmoon-copyright">
+
+                    <!-- copyright container ( align to center ) -->
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col s12">
+                                <p>
+
+                                    <?php
+                                        /**
+                                         *
+                                         *  Content Copyright
+                                         *  Customer can overwrite Content Copyright from the theme options
+                                         *
+                                         *  Appearance / Customize / Others - option "Content Copyright"
+                                         */
+                                    ?>
+
+                                    <span class="copyright"><?php echo techmoon_validate_copyright( get_theme_mod( 'techmoon-copyright' , sprintf( __( 'Copyright &copy; %s %s. Powered by %s.' , 'materialize' ) , date( 'Y' ) , esc_html( get_bloginfo( 'name' ) ) , '<a href="http://wordpress.org/">WordPress</a>' ) ) ); ?></span>
+
+                                    <?php
+                                        /**
+                                         *
+                                         *  Materialize WordPress Theme Copyright and Credit Link
+                                         *
+                                         *  We strongly recommend do not alter, modify, change or / and overwrite this section.
+                                         *  Also we strongly recommend do not alter, modify, change or / and overwrite the visula
+                                         *  appearance for this section by using css rules or JavaScript code.
+                                         *
+                                         *  Before make some changes to this section please consult
+                                         *  the license terms of use. Also you can discus this with
+                                         *  your law consultant.
+                                         *
+                                         *  @link : http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+                                         */
+                                    ?>
+
+                                    <span><?php printf( __( 'Designed by %s.' , 'materialize' ) , '<a href="' . esc_url( techmoon_core::author( 'url' ) ) . '" target="_blank" title="' . esc_attr( techmoon_core::author( 'name' ) ) . '" class="techmoon">' . techmoon_core::author( 'name' ) . '</a>' ); ?></span>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div><!-- .container -->
+                </div><!-- .techmoon-copyright -->
+            </div>
+
+        </footer>
+
+        <?php wp_footer(); ?>
+
+    </body>
 </html>

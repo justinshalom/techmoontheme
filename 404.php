@@ -1,39 +1,79 @@
 <?php
 /**
- * The template for displaying 404 pages (not found)
  *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
+ *  The template for displaying 404 pages (not found)
  *
- * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
- * @version 1.0
+ *  @package WordPress
+ *  @subpackage Materialize
+ *  @since Materialize 1.0
  */
 
 get_header(); ?>
 
-<div class="wrap col s12 no-padding">
-  <header class="page-header  col s12 z-depth-1">
-    <h4 class="page-title">
-      <i class="material-icons left">sentiment_dissatisfied</i> 
-      <?php _e( 'Oops! That page can&rsquo;t be found.', 'techmoon' ); ?>
-    </h4>
-  </header>
-  <!-- .page-header -->
 
-  <div id="primary" class="content-area col s12 ">
-		<main id="main" class="site-main col s12 " role="main">
+<?php
+    if( (bool)get_theme_mod( 'techmoon-show-breadcrumbs', true ) ){
+?>
+        <!-- the breadcrumbs content -->
+        <div class="techmoon-page-header">
 
-			<section class="error-404 not-found col s12 ">
-				<div class="page-content col s12 ">
-					<p class="col s12"><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'techmoon' ); ?></p>
+            <!-- the breadcrumbs container ( align to center ) -->
+            <div class="container">
+                <div class="row">
 
-					<?php get_search_form(); ?>
+                    <div class="col s12">
 
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
-		</main><!-- #main -->
-	</div><!-- #primary -->
-</div><!-- .wrap -->
+                        <!-- the breadcrumbs navigation path -->
+                        <nav class="techmoon-nav-inline">
+                            <ul class="techmoon-menu">
 
-<?php get_footer();
+                                <!-- the home link -->
+                                <?php echo techmoon_breadcrumbs::home(); ?>
+
+                                <!-- the last arrow from path -->
+                                <li></li>
+                            </ul>
+                        </nav>
+
+                        <!-- the headline -->
+                        <h1><?php printf( __( 'Error %s' , 'materialize' ) , number_format_i18n( 404 ) ); ?></h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+<?php
+    }
+?>
+
+
+    <!-- the content -->
+    <div class="content">
+
+        <!-- the container ( align to center ) -->
+        <div class="container">
+            <div class="row">
+
+                <!-- the page content length ( 12 columns )  -->
+                <section class="col s12">
+
+                    <!-- the page content -->
+                    <div>
+                        <h1 class="error-404"><?php echo number_format_i18n( 404 ); ?></h1>
+                        <big class="error-404-message"><?php echo materialize_not_found_message(); ?></big>
+                        <p class="error-404-description"><?php echo materialize_not_found_description(); ?></p>
+
+                        <!-- the search form -->
+                        <div class="error-404-search">
+                            <?php get_search_form(); ?>
+                        </div>
+                    <div>
+
+                </section>
+
+            </div>
+        </div><!-- .container -->
+    </div><!-- .content -->
+
+
+<?php get_footer(); ?>

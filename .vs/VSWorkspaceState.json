@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\cfg",
+    "\\cfg\\pages",
+    "\\cfg\\widgets",
+    "\\lib",
+    "\\media",
+    "\\media\\_backend",
+    "\\templates",
+    "\\templates\\meta",
+    "\\templates\\views"
+  ],
+  "SelectedNode": "\\cfg\\customize.php",
+  "PreviewInSolutionExplorer": false
+}

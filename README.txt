@@ -1,86 +1,246 @@
-=== Techmoon ===
-Contributors: Justin
-Requires at least: WordPress 4.7
-Tested up to: WordPress 5.0-trunk
-Version: 1.4
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
 
-== Description ==
+    Materialize
 
-TechMoon brings your site to life with header video and immersive featured images. With a focus on business sites, it features multiple sections on the front page as well as widgets, navigation and social menus, a logo, and more. Personalize its asymmetrical grid with a custom color scheme and showcase your multimedia content with post formats. Our default theme for 2017 works great in many languages, for any abilities, and on any device.
 
-For more information about TechMoon please go to https://codex.wordpress.org/Twenty_Seventeen.
+    Thank you for choosing myThem.es and use one of our WordPress Themes
+    your choice is greatly appreciated!
 
-== Installation ==
 
-1. In your admin panel, go to Appearance -> Themes and click the 'Add New' button.
-2. Type in TechMoon in the search form and press the 'Enter' key on your keyboard.
-3. Click on the 'Activate' button to use your new theme right away.
-4. Go to https://codex.wordpress.org/Twenty_Seventeen for a guide on how to customize this theme.
-5. Navigate to Appearance > Customize in your admin panel and customize to taste.
+    myThem.es Marketplace provides WordPress themes with
+    the best quality and the smallest prices.
+    
 
-== Copyright ==
+    Materialize, Copyright 2015 myThem.es
 
-TechMoon WordPress Theme, Copyright 2016 WordPress.org
-TechMoon is distributed under the terms of the GNU GPL
+    Materialize is distributed under the terms of the
+    GNU GENERAL PUBLIC LICENSE
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
+   *****************************************************************************
 
-TechMoon bundles the following third-party resources:
 
-HTML5 Shiv, Copyright 2014 Alexander Farkas
-Licenses: MIT/GPL2
-Source: https://github.com/aFarkas/html5shiv
+                     ________________
+                    |_____    _______|
+     ___ ___ ___   __ __  |  |  __       ____   ___ ___ ___       ____   ____ 
+    |           | |_ |  | |  | |  |___  |  __| |           |     |  __| |  __|
+    |   |   |   |  | |  | |  | |  __  | |  __| |   |   |   |  _  |  __| |__  |
+    |___|___|___|   |  |  |__| |_ ||_ | |____| |___|___|___| |_| |____| |____|   
+                    |_|
 
-jQuery scrollTo, Copyright 2007-2015 Ariel Flesler
-License: MIT
-Source: https://github.com/flesler/jquery.scrollTo
 
-normalize.css, Copyright 2012-2016 Nicolas Gallagher and Jonathan Neal
-License: MIT
-Source: https://necolas.github.io/normalize.css/
 
-Font Awesome icons, Copyright Dave Gandy
-License: SIL Open Font License, version 1.1.
-Source: http://fontawesome.io/
+   *****************************************************************************
 
-Bundled header image, Copyright Alvin Engler
-License: CC0 1.0 Universal (CC0 1.0)
-Source: https://unsplash.com/@englr?photo=bIhpiQA009k
 
-== Changelog ==
 
-= 1.4 =
-* Released: November 14, 2017
+    - Theme URI         : http://mythem.es/item/materialize-free-wordpress-theme/
+    - Support URI       : http://mythem.es/forums/forum/themes/materialize/materialize-free/
 
-https://codex.wordpress.org/Twenty_Seventeen_Theme_Changelog#Version_1.4
+    - Author            : myThem.es
+    - Author URI        : http://mythem.es
 
-= 1.3 =
-* Released: June 8, 2017
+    - Demo URI          : http://test.mythem.es/materialize-wordpress/
 
-https://codex.wordpress.org/Twenty_Seventeen_Theme_Changelog#Version_1.3
 
-= 1.2 =
-* Released: April 18, 2017
+    
+   *****************************************************************************
 
-https://codex.wordpress.org/Twenty_Seventeen_Theme_Changelog#Version_1.2
 
-= 1.1 =
-* Released: January 6, 2017
 
-https://codex.wordpress.org/Twenty_Seventeen_Theme_Changelog#Version_1.1
+    - More about            : http://www.google.com/fonts#AboutPlace:about
+    - Used Fonts            : Poiret One, Raleway, Open Sans,
 
-= 1.0 =
-* Released: December 6, 2016
+    - Used Icons Fonts	    : Fontello
+    - Fontello URI 	        : http://fontello.com/
 
-Initial release
+    -  Fontelico
+
+       Copyright (C) 2012 by Fontello project
+
+       Author:    Crowdsourced, for Fontello project
+       License:   SIL (http://scripts.sil.org/OFL)
+       Homepage:  http://fontello.com
+
+
+    -  Web Symbols
+
+       Copyright (c) 2011 by Just Be Nice studio. All rights reserved.
+
+       Author:    Just Be Nice studio
+       License:   SIL (http://scripts.sil.org/OFL)
+       Homepage:  http://www.justbenicestudio.com/
+
+
+    -  Font Awesome
+
+       Copyright (C) 2012 by Dave Gandy
+
+       Author:    Dave Gandy
+       License:   SIL ()
+       Homepage:  http://fortawesome.github.com/Font-Awesome/
+
+
+    -  Entypo
+
+        copyright (C) 2012 by Daniel Bruce
+
+        Author:    Daniel Bruce
+        License:   SIL (http://scripts.sil.org/OFL)
+        Homepage:  http://www.entypo.com
+
+
+    -  Typicons
+
+       (c) Stephen Hutchings 2012
+
+       Author:    Stephen Hutchings
+       License:   SIL (http://scripts.sil.org/OFL)
+       Homepage:  http://typicons.com/
+
+
+    -  Iconic
+
+       Copyright (C) 2012 by P.J. Onori
+
+       Author:    P.J. Onori
+       License:   SIL (http://scripts.sil.org/OFL)
+       Homepage:  http://somerandomdude.com/work/iconic/
+
+
+    -  Modern Pictograms
+
+       Copyright (c) 2012 by John Caserta. All rights reserved.
+
+       Author:    John Caserta
+       License:   SIL (http://scripts.sil.org/OFL)
+       Homepage:  http://thedesignoffice.org/project/modern-pictograms/
+
+
+    -  Meteocons
+
+       Copyright (C) 2012 by Alessio Atzeni
+
+       Author:    Alessio Atzeni
+       License:   SIL (http://scripts.sil.org/OFL)
+       Homepage:  http://www.alessioatzeni.com
+
+
+    -  MFG Labs
+
+       Copyright (C) 2012 by Daniel Bruce
+
+       Author:    MFG Labs
+       License:   SIL (http://scripts.sil.org/OFL)
+       Homepage:  http://www.mfglabs.com/
+
+
+    -  Maki
+
+       Copyright (C) Mapbox, LCC
+
+       Author:    Mapbox
+       License:   BSD (https://github.com/mapbox/maki/blob/gh-pages/LICENSE.txt)
+       Homepage:  http://mapbox.com/maki/
+
+
+    -  Zocial
+
+       Copyright (C) 2012 by Sam Collins
+
+       Author:    Sam Collins
+       License:   MIT (http://opensource.org/licenses/mit-license.php)
+       Homepage:  http://zocial.smcllns.com/
+
+
+    -  Brandico
+
+       (C) 2012 by Vitaly Puzrin
+
+       Author:    Crowdsourced, for Fontello project
+       License:   SIL (http://scripts.sil.org/OFL)
+       Homepage:  
+
+
+    -  Elusive
+
+       Copyright (C) 2013 by Aristeides Stathopoulos
+
+       Author:    Aristeides Stathopoulos
+       License:   SIL (http://scripts.sil.org/OFL)
+       Homepage:  http://aristeides.com/
+
+
+    -  Linecons
+
+       Copyright (C) 2013 by Designmodo
+
+       Author:    Designmodo for Smashing Magazine
+       License:   CC BY ()
+       Homepage:  http://designmodo.com/linecons-free/
+
+
+
+   *****************************************************************************
+
+
+    Header image licensed under Creative Commons Zero
+    https://unsplash.com/photos/0G1r-Cg0zS8
+
+    Images from screenshot licensed under Creative Commons Zero
+    https://unsplash.com/photos/GANqCr1BRTU
+    https://unsplash.com/photos/m0l5J8Lqnzo
+    https://unsplash.com/photos/5ulmc8IHdLc
+    https://unsplash.com/photos/Dpv4yCZKFG8
+    https://unsplash.com/photos/1eWaod96d3k
+    https://unsplash.com/photos/RlYsCMbF6EI
+    https://unsplash.com/photos/3f4sQIums6k
+    https://unsplash.com/photos/vj_9l20fzj0
+    https://unsplash.com/photos/v4ZUGlrdVAA
+
+    Materialize v0.97.6, Copyright 2014-2015 Materialize
+    Materialize v0.97.6 is under the terms of MIT License
+    http://materializecss.com
+
+    HTML5 Shiv v3.7.0, Copyright (c) @afarkas @jdalton @jon_neal @rem
+    HTML5 Shiv v3.7.0 is under the terms of MIT license.
+
+    prettyPhoto v3.1.5, Copyright (c) Stephane Caron
+    prettyPhoto is under the terms of GPLV2 license.
+    You are free to use prettyPhoto in commercial projects as long as the
+    copyright header is left intact.
+    http://www.no-margin-for-errors.com
+
+    Respond.js v1.4.2, Copyright (c) 2013 Scott Jehl
+    Respond.js v1.4.2 is under the terms of MIT license.
+    http://scottjehl.com
+    
+
+   *****************************************************************************
+
+
+
+    HOW TO USE
+
+
+    1. WELCOME MESSAGE
+
+    Thank you for choosing myThem.es and use one of our WordPress Themes your
+    choice is greatly appreciated!
+
+    If you have any questions ask!
+
+    Before ask, please read all topics from our forums, marked as AUTHOR SUGGEST:
+    http://mythem.es/forums/forum/themes/materialize/materialize-free/
+
+    And please help us to increase the theme quality ( report bugs ).
+
+    Also please help us to increase the theme rank!
+
+
+    2. CUSTOMIZE YOUR THEME
+
+    This theme comes with a set of options what allow you to customize content,
+    header, layouts, social items and others.
+
+    You can see theme options if you go to Admin Dashboard
+    Appearance > Customize

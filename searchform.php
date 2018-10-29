@@ -1,21 +1,27 @@
 <?php
 /**
- * Template for displaying search forms in TechMoon
  *
- * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
- * @version 1.0
+ *  The template for the search form
+ *
+ *  @package WordPress
+ *  @subpackage Materialize
+ *  @since Materialize 1.0
  */
-
 ?>
 
-<?php $unique_id = esc_attr( uniqid( 'search-form-' ) ); ?>
+<!-- search form -->
+<form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" id="searchform">
+    <fieldset>
+        <div id="searchbox">
 
-<form role="search" method="get" class="search-form col s12 input-field " action="<?php echo esc_url( home_url( '/' ) ); ?>">
-	
-	
-	<input type="search" id="<?php echo $unique_id; ?>" class="search-field col s8"  value="<?php echo get_search_query(); ?>" name="s" />
-	<label for="<?php echo $unique_id; ?>">Search</label>
-	<button type="submit" class="search-submit waves-effect waves-light btn  btn-small "><i class="material-icons ">search</i><span>Search</span></button>
+        	<!-- search input -->
+            <input type="text" name="s"  id="keywords" value="<?php _e( 'type here...' , 'materialize' ); ?>" onfocus="if (this.value == '<?php _e( 'type here...' , 'materialize' ); ?>') {this.value = '';}" onblur="if (this.value == '') {this.value = '<?php _e( 'type here...' , 'materialize' ); ?>';}">
+
+            <!-- search button -->
+            <button type="submit" class="waves-effect waves-light btn green">
+
+            	<!-- button search icon -->
+            	<i class="materialize-icon-search-5"></i></button>
+        </div>
+    </fieldset>
 </form>
